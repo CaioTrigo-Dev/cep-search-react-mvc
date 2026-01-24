@@ -1,0 +1,25 @@
+body{
+  background: rgb(127, 175, 54);
+}
+#root{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+.form{
+  background: white;
+  width: 500px;
+  padding: 50px;
+  border-radius: 8px;
+  display: flex;
+  padding: 10px;
+  align-items: center;
+  justify-content: center;
+}
+input{
+  margin: 10px;
+}
+h1{
+  font-size: 20px;
+}
