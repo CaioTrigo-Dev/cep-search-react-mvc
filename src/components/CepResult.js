@@ -1,20 +1,11 @@
-export default function CepResult({error, address}){
-  if(error){
-    return(
-      <div className="result-Error">
-        {error}
-      </div>
-    )
-  }
-
-  if(address){
+export default function CepResult({address, reset}){
     return(
       <div className="result-Sucess">
-        <h3>Endereço Encontrado:</h3>
+        <h2>Endereço Encontrado:</h2>
         <p><strong>Rua:</strong> {address.logradouro}</p>
         <p><strong>Bairro:</strong> {address.bairro}</p>
         <p><strong>Cidade:</strong> {address.localidade} - {address.uf}</p>
+        <button onClick={reset}>Fazer uma Nova Busca</button>
       </div>
     )
-  }
 }
