@@ -1,70 +1,51 @@
-# Getting Started with Create React App
+# 📍 Busca CEP - React MVC Pattern
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![Status](https://img.shields.io/badge/Status-Concluído-green)
+![React](https://img.shields.io/badge/React-18.x-blue)
+![Architecture](https://img.shields.io/badge/Pattern-MVC-orange)
 
-## Available Scripts
+## 📝 Sobre o Projeto
 
-In the project directory, you can run:
+Este projeto é uma aplicação web desenvolvida para estudar e aplicar a arquitetura **MVC (Model-View-Controller)** dentro do ecossistema **React**.
 
-### `npm start`
+O objetivo principal foi desacoplar a lógica de negócios da interface do usuário, criando um código mais limpo, escalável e fácil de testar. A aplicação consome a API do [ViaCEP](https://viacep.com.br/) para fornecer endereços baseados no CEP digitado.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 🚀 Funcionalidades
 
-### `npm test`
+- [x] **Consulta de Endereço:** Busca automática por logradouro, bairro, cidade e estado.
+- [x] **Arquitetura MVC:** Separação rígida de responsabilidades (Hooks para lógica, Componentes para visual).
+- [x] **Validação de Dados:** Verificação de formato do CEP (8 dígitos numéricos) utilizando Regex e Funções Puras.
+- [x] **Feedback de UX:**
+  - Status de "Carregando" (Loading) para feedback imediato.
+  - Tratamento de erros (CEP inválido, não encontrado ou erro de conexão).
+- [x] **Máquina de Estados de Tela:** Controle de exibição condicional entre formulário, carregamento e resultado.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+## 🏗️ Estrutura do Projeto (MVC)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+A organização das pastas reflete a separação de responsabilidades do padrão MVC:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```text
+src/
+│
+├── 📂 assets/
+│   └── app.css           # Estilos globais da aplicação
+│
+├── 📂 components/        # (VIEW) Camada Visual "Burra"
+│   ├── CepForm.js        # Formulário de entrada de dados
+│   └── CepResult.js      # Exibição do resultado ou erros
+│
+├── 📂 hooks/             # (CONTROLLER) O "Cérebro"
+│   └── useCepController.js # Regras de negócio, estados e gestão de fluxo
+│
+├── 📂 services/          # (MODEL) Comunicação Externa
+│   └── viaCep.js         # Chamadas à API (Fetch) isoladas
+│
+├── 📂 utils/             # (HELPERS) Ferramentas
+│   └── validators.js     # Funções puras de validação (Regex)
+│
+├── app.js                # Componente Raiz (Conecta View ao Controller)
+└── index.js              # Ponto de Entrada (Renderiza o App no DOM)
