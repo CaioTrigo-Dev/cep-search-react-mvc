@@ -23,3 +23,14 @@ input{
 h1{
   font-size: 20px;
 }
+.result-Error{
+  color: red;
+  margin-top: 20px;
+}
+.result-Sucess{
+  background: white;
+  width: 500px;
+  padding: 50px;
+  border-radius: 8px;
+  margin-top: 20px;
+}
